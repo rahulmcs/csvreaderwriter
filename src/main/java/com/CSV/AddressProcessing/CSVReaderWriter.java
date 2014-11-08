@@ -14,12 +14,12 @@ import java.io.IOException;
  * This class has been deprecated since the class and each of its methods have serious design flaws
  * thereby rendering the api to be confusing, insecure and highly inefficient:
  * <ul>
- * <li> 1. Provides a fat and confusing interface with read and write methods in the same class th</li>
+ * <li> 1. Provides a fat and confusing interface with read and write methods in the same class.</li>
  * <li> 2. The {@link #open} method provides a confusing {@link Mode} parameter which then places
  * an additional burden on {@link #write} and {@link #read} methods to perform sanity checks. We would be better
- * by two classes - one that reads from and the other that writes to CSV tab separated files</li>
- * <li> 3. The {@link #write method usees var args whereas it is semantically more accurate in this context to
- * simply pass in an array of string representing a tab separated line}</li>
+ * off by having two classes - one that reads from and the other that writes to CSV tab separated files</li>
+ * <li> 3. The {@link #write method uses var args whereas it is semantically more accurate in this context to
+ * simply pass in an array of strings representing a tab separated line}</li>
  * <li> 4. The {@link #read(String[]) read} method requires a pre-allocated string array as input however it is unreasonable for the caller to know the size in advance</li>
  * <li> 5. The {@link #read(String, String) read} method is redundant in favour of {@link #read(String[]) read}</li>
  * </ul>
@@ -77,10 +77,10 @@ import java.io.IOException;
         /** RC: More efficient to use a StringBuilder to perform the join operation rather than
          * use the inefficient + operator in a loop.
          *
-         * However, one should note that RFC 4180 provides a de factor standard CSV format and
+         * However, one should note that RFC 4180 provides a de facto standard CSV format and
          * it is preferable to use a well tested open source library (released under Apache 2.0 preferably)
-         * to achieve the tab limited CSV file writing/Reading. {@link http://opencsv.sourceforge.net/} is one such popular library
-         * which is heavily tested, robust and reliable.
+         * to achieve the tab limited CSV file writing/Reading. {@see <a href="http://opencsv.sourceforge.net">http://opencsv.sourceforge.net</a>}
+         * is one such popular library which is heavily tested, robust and reliable.
          */
         for (int i = 0; i < columns.length; i++) {
             outPut += columns[i];
@@ -101,7 +101,7 @@ import java.io.IOException;
         final int SECOND_COLUMN = 1;
 
         /** RC: what is the purpose of the above two? Does the api only read first two tab separated tokens?
-         * If so that is not obvious anywhere?
+         * If so that is not obvious anywhere from the method signature?
          */
 
         String line;
@@ -131,11 +131,11 @@ import java.io.IOException;
             return true;
         }
 
-        /** RC: However, one should note that RFC 4180 provides a de facto standard CSV format and
+        /** However, one should note that RFC 4180 provides a de facto standard CSV format and
         * it is preferable to use a well tested open source library (released under Apache 2.0 preferably)
-        * to achieve the tab limited CSV file writing/Reading. {@link http://opencsv.sourceforge.net/} is one such popular library
-        * which is heavily tested, robust and reliable. */
-
+        * to achieve the tab limited CSV file writing/Reading. {@see <a href="http://opencsv.sourceforge.net">http://opencsv.sourceforge.net</a>}
+        * is one such popular library which is heavily tested, robust and reliable.
+        */
     }
 
     /** RC: Missing api documentation */

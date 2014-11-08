@@ -5,8 +5,6 @@
 bin
 build
 *.iml
-gradlefx.ipr
-gradlefx.iws
 *.ipr
 *.iws
 **/*.ipr

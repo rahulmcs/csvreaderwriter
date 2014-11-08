@@ -10,8 +10,8 @@ import java.util.List;
 /**
  * Implementation of the CSV {@link Reader} interface for tab separated values.
  *
- * @note Delegates the actual implementation to the popular OpenCSV open source library
- * @see {http://opencsv.sourceforge.net/}
+ * Delegates the actual implementation to the popular OpenCSV open source library
+ * @see <a href="http://opencsv.sourceforge.net">http://opencsv.sourceforge.net</a>
 
  * @author rahulchaudhari
  *
