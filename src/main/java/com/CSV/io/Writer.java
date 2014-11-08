@@ -13,7 +13,7 @@ import java.util.List;
 public interface Writer {
 
     /**
-     * Writes the entire list to a CSV file. The list is assumed to be a String[].
+     * Writes the entire list to a CSV file. Each element is assumed to be a line of tokens as a String[].
      * @param lines a List of String[], with each String[] representing a line of the file containing csv tokens.
      */
     void append(List<String[]> lines);

@@ -8,8 +8,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 /**
- * @deprecated As of version x.yz, replaced by the new {@link com.CSV.io.Reader} and {@link com.CSV.io.Writer} interfaces.
- * For the new usage, please refer to {@link com.CSV.io.ReaderFactory} and {@link com.CSV.io.WriterFactory}
+ * @deprecated As of version x.yz, replaced by the new {@link com.CSV.io.Reader} and {@link com.CSV.io.Writer}
+ * interfaces. For the new usage, please refer to {@link com.CSV.io.ReaderFactory} and {@link com.CSV.io.WriterFactory}
  *
  * This class has been deprecated since the class and each of its methods have serious design flaws
  * thereby rendering the api to be confusing, insecure and highly inefficient:
@@ -20,7 +20,8 @@ import java.io.IOException;
  * off by having two classes - one that reads from and the other that writes to CSV tab separated files</li>
  * <li> 3. The {@link #write method uses var args whereas it is semantically more accurate in this context to
  * simply pass in an array of strings representing a tab separated line}</li>
- * <li> 4. The {@link #read(String[]) read} method requires a pre-allocated string array as input however it is unreasonable for the caller to know the size in advance</li>
+ * <li> 4. The {@link #read(String[]) read} method requires a pre-allocated string array as input however it is
+ * unreasonable for the caller to know the size in advance</li>
  * <li> 5. The {@link #read(String, String) read} method is redundant in favour of {@link #read(String[]) read}</li>
  * </ul>
  *
@@ -64,8 +65,8 @@ import java.io.IOException;
     }
 
     /** RC: Missing api documentation */
-    /** RC: Would be worth passing in a string array representing a line of tab separated tokens rather than variable arguments
-     * as the former is more semantically accurate and consistent.
+    /** RC: Would be worth passing in a string array representing a line of tab separated tokens rather than
+     * variable arguments as the former is more semantically accurate and consistent.
      */
     public void write(String... columns) throws IOException {
         String outPut = "";
@@ -79,7 +80,8 @@ import java.io.IOException;
          *
          * However, one should note that RFC 4180 provides a de facto standard CSV format and
          * it is preferable to use a well tested open source library (released under Apache 2.0 preferably)
-         * to achieve the tab limited CSV file writing/Reading. {@see <a href="http://opencsv.sourceforge.net">http://opencsv.sourceforge.net</a>}
+         * to achieve the tab limited CSV file writing/Reading.
+         * {@see <a href="http://opencsv.sourceforge.net">http://opencsv.sourceforge.net</a>}
          * is one such popular library which is heavily tested, robust and reliable.
          */
         for (int i = 0; i < columns.length; i++) {
@@ -132,10 +134,11 @@ import java.io.IOException;
         }
 
         /** However, one should note that RFC 4180 provides a de facto standard CSV format and
-        * it is preferable to use a well tested open source library (released under Apache 2.0 preferably)
-        * to achieve the tab limited CSV file writing/Reading. {@see <a href="http://opencsv.sourceforge.net">http://opencsv.sourceforge.net</a>}
-        * is one such popular library which is heavily tested, robust and reliable.
-        */
+         * it is preferable to use a well tested open source library (released under Apache 2.0 preferably)
+         * to achieve the tab limited CSV file writing/Reading.
+         * {@see <a href="http://opencsv.sourceforge.net">http://opencsv.sourceforge.net</a>}
+         * is one such popular library which is heavily tested, robust and reliable.
+         */
     }
 
     /** RC: Missing api documentation */
