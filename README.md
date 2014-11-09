@@ -71,8 +71,11 @@ Build Instructions
 The project uses gradle to build the java source files into a jar library and maven to push the generated jar artifacts to the maven local repository. Having maven and gradle already configured on your system is therefore a pre-requisite. It would also be simplest to install IntelliJ which has in-built support for gradle and maven.
 
 Steps to follow:
+
 1. On the mac command line (not tested on windows), clone the repository as `git clone git@github.com:rahulmcs/csvreaderwriter.git`. You may need to install git command line tools if not present.
+
 2. `cd cvsreaderwriter`
+
 3. `./gradlew uploadArchives`. This will build the library and publish the artifact to the local maven repository with following details:
 
 `Group Id: 'com.CSV'`
