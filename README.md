@@ -5,15 +5,15 @@ A utility library to allow reading/writing of Tab separated tokens (CSV) to and 
 
 Historically, [CSVReaderWriter](https://github.com/rahulmcs/csvreaderwriter/blob/master/src/main/java/com/CSV/AddressProcessing/CSVReaderWriter.java)  provided this functionality via a bloated, inconsistent and semantically inaccurate interface which has now been deprecated in favour of the refactored [Reader](https://github.com/rahulmcs/csvreaderwriter/blob/master/src/main/java/com/CSV/io/Reader.java) and [Writer](https://github.com/rahulmcs/csvreaderwriter/blob/master/src/main/java/com/CSV/io/Writer.java) interfaces.
 
+Please browse [CSVReaderWriter](https://github.com/rahulmcs/csvreaderwriter/blob/master/src/main/java/com/CSV/AddressProcessing/CSVReaderWriter.java) to understand the now deprecated api and the motivation behind deprecating the entire class.
+
+Package [io](https://github.com/rahulmcs/csvreaderwriter/blob/master/src/main/java/com/CSV/io/) contains the newly refactored code alongwith javadocs to understand the method usage.
+
 [ReaderFactory](https://github.com/rahulmcs/csvreaderwriter/blob/master/src/main/java/com/CSV/io/ReaderFactory.java) and [WriterFactory](https://github.com/rahulmcs/csvreaderwriter/blob/master/src/main/java/com/CSV/io/WriterFactory.java) provide factory methods to instantiate concrete implementations of these interfaces. 
 
 [TabSeparatedReader](https://github.com/rahulmcs/csvreaderwriter/blob/master/src/main/java/com/CSV/io/TabSeparatedReader.java) and [TabSeparatedWriter](https://github.com/rahulmcs/csvreaderwriter/blob/master/src/main/java/com/CSV/io/TabSeparatedWriter.java)  are concrete implementations of the [Reader](https://github.com/rahulmcs/csvreaderwriter/blob/master/src/main/java/com/CSV/io/Reader.java) and [Writer](https://github.com/rahulmcs/csvreaderwriter/blob/master/src/main/java/com/CSV/io/Writer.java) interfaces. They use the popular [OpenCSV](http://opencsv.sourceforge.net) open source library available under Apache 2.0 license for implementing the core CSV parsing and serialisation/de-serialisation logic to gain from a robust, standard implementation that has been heavily tested in production code.
 
-An interface oriented design allows for providing various concrete implementations of the [Reader](https://github.com/rahulmcs/csvreaderwriter/blob/master/src/main/java/com/CSV/io/Reader.java) and [Writer](https://github.com/rahulmcs/csvreaderwriter/blob/master/src/main/java/com/CSV/io/Writer.java) interfaces (e.g. an implementation for storing meta data alogwith CSV values) and also allows for changing underlying implementation without breaking the api.
-
-Please browse [CSVReaderWriter](https://github.com/rahulmcs/csvreaderwriter/blob/master/src/main/java/com/CSV/AddressProcessing/CSVReaderWriter.java) to understand the now deprecated api and the motivation behind deprecating the entire class.
-
-Package [io](https://github.com/rahulmcs/csvreaderwriter/blob/master/src/main/java/com/CSV/io/) contains the newly refactored code alongwith javadocs to understand the method usage.
+An interface oriented design allows for providing various concrete implementations of the [Reader](https://github.com/rahulmcs/csvreaderwriter/blob/master/src/main/java/com/CSV/io/Reader.java) and [Writer](https://github.com/rahulmcs/csvreaderwriter/blob/master/src/main/java/com/CSV/io/Writer.java) interfaces (e.g. an implementation for storing meta data alogwith CSV values) and also allows for changing the underlying implementation without breaking the public api.
 
 
 New Usage
@@ -70,9 +70,9 @@ Build Instructions
 ===============
 The project uses gradle to build the java source files into a jar library and maven to push the generated jar artifacts to the maven local repository. Having maven and gradle already configured on your system is therefore a pre-requisite. It would also be simplest to install IntelliJ which has in-built support for gradle and maven.
 
-Steps to follow:
+Steps to follow on the Mac OSX command line (not tested on windows):
 
-1. On the mac command line (not tested on windows), clone the repository as `git clone git@github.com:rahulmcs/csvreaderwriter.git`. You may need to install git command line tools if not present.
+1.Clone the github repository as `git clone git@github.com:rahulmcs/csvreaderwriter.git`. You may need to install git command line tools if not already installed.
 
 2. `cd cvsreaderwriter`
 
@@ -103,4 +103,4 @@ dependencies {
 
 TODO
 ===============
-Create a Sonatype repository so that the artifact can be published on to Maven central and can then be accessed by applications without needing to first publish the library to a local maven repository.
+Create a Sonatype Nexus repository so that the artifact can be published on to Maven central and can then be accessed by applications without needing to first publish the library to a local maven repository.
