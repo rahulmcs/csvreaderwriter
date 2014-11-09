@@ -68,9 +68,12 @@ To write a few lines worth of tab separated values to a file `data.txt`, one wou
 
 Build Instructions
 ===============
-The project uses gradle to build the java source files into a jar library and maven to push the generated jar artifacts to the maven local repository. Having maven and gradle already configured on your system is therefore a pre-requisite. It would also be simplest to pull the code locally from github and open it using IntelliJ which has in-built support for gradle and maven.
+The project uses gradle to build the java source files into a jar library and maven to push the generated jar artifacts to the maven local repository. Having maven and gradle already configured on your system is therefore a pre-requisite. It would also be simplest to install IntelliJ which has in-built support for gradle and maven.
 
-On the mac command line (not tested on windows), simply issue `./gradlew uploadArchives` command which will build the library and publish the artifact to the local maven repository with following details:
+Steps to follow:
+1. On the mac command line (not tested on windows), clone the repository as `git clone git@github.com:rahulmcs/csvreaderwriter.git`. You may need to install git command line tools if not present.
+2. `cd cvsreaderwriter`
+3. `./gradlew uploadArchives`. This will build the library and publish the artifact to the local maven repository with following details:
 
 `Group Id: 'com.CSV'`
 
