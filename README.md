@@ -19,8 +19,11 @@ Build Instructions
 The project uses gradle to build the java source files into a jar library and maven to push the generated jar artifacts to the maven local repository.Therefore having maven and gradle already configured on your system is a pre-requisite. It would be simplest to pull the code locally for github and open it using IntelliJ which has in-built support for gradle and mavem.
 
 On the command line, simply issue a gradle uploadArchives (or ./gradlew uploadArchives on a mac) command which will build the library and publish the artifact to the local maven repository with followng details:
+
 Group Id: 'com.CSV'
+
 artifact id: 'csvreaderwriter'
+
 version: '1.1'
 
 Dependency Instructions
@@ -29,11 +32,15 @@ Dependency Instructions
 Once deployed, the locally published jar canthen be used in your gradle or maven based application project by adding the following dependency information to your build.gradle file:
 
 repositories {
+
     mavenLocal()
+    
 }
 
 dependencies {
+
      compile 'com.CSV:csvreaderwriter:1.1'
+     
 }
 
 TODO
