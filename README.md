@@ -1,16 +1,20 @@
-csvreaderwriter
+csvreaderwriter
 ===============
 
 A utility library to allow reading/writing of Tab separated tokens (CSV) to and from text files.
 
-Historically, [CSVReaderWriter](https://github.com/rahulmcs/csvreaderwriter/blob/master/src/main/java/com/CSV/AddressProcessing/CSVReaderWriter.java)  provided this functionality via a bloated, inconsistent and semantically inaccurate interface and has now been deprecated in favour of the new and improved [Reader](https://github.com/rahulmcs/csvreaderwriter/blob/master/src/main/java/com/CSV/io/Reader.java) and [Writer](https://github.com/rahulmcs/csvreaderwriter/blob/master/src/main/java/com/CSV/io/Writer.java) interfaces 
-alongwith [ReaderFactory](https://github.com/rahulmcs/csvreaderwriter/blob/master/src/main/java/com/CSV/io/ReaderFactory.java) and [WriterFactory](https://github.com/rahulmcs/csvreaderwriter/blob/master/src/main/java/com/CSV/io/WriterFactory.java) classes to instantiate [TabSeparatedReader](https://github.com/rahulmcs/csvreaderwriter/blob/master/src/main/java/com/CSV/io/TabSeparatedReader.java) and [TabSeparatedWriter](https://github.com/rahulmcs/csvreaderwriter/blob/master/src/main/java/com/CSV/io/TabSeparatedWriter.java) which are concrete implementations of the [Reader](https://github.com/rahulmcs/csvreaderwriter/blob/master/src/main/java/com/CSV/io/Reader.java) and [Writer](https://github.com/rahulmcs/csvreaderwriter/blob/master/src/main/java/com/CSV/io/Writer.java) interfaces. They use the popular [OpenCSV](http://opencsv.sourceforge.net) open source library available under Apache 2.0 license for implementing the core CSV parsing and serialisation/de-serialisation logic to gain from a robust, standard implementation that has been heavily tested in production code.
+Historically, [CSVReaderWriter](https://github.com/rahulmcs/csvreaderwriter/blob/master/src/main/java/com/CSV/AddressProcessing/CSVReaderWriter.java)  provided this functionality via a bloated, inconsistent and semantically inaccurate interface which has now been deprecated in favour of the refactored [Reader](https://github.com/rahulmcs/csvreaderwriter/blob/master/src/main/java/com/CSV/io/Reader.java) and [Writer](https://github.com/rahulmcs/csvreaderwriter/blob/master/src/main/java/com/CSV/io/Writer.java) interfaces.
 
-An interface oriented design allows for providing more concrete implementations of the [Reader](https://github.com/rahulmcs/csvreaderwriter/blob/master/src/main/java/com/CSV/io/Reader.java) and [Writer](https://github.com/rahulmcs/csvreaderwriter/blob/master/src/main/java/com/CSV/io/Writer.java) interfaces (e.g. an implementation for storing meta data alogwith CSV values) and changing underlying implementation without breaking the api.
+[ReaderFactory](https://github.com/rahulmcs/csvreaderwriter/blob/master/src/main/java/com/CSV/io/ReaderFactory.java) and [WriterFactory](https://github.com/rahulmcs/csvreaderwriter/blob/master/src/main/java/com/CSV/io/WriterFactory.java) provide factory methods to instantiate concrete implementations of these interfaces. 
+
+[TabSeparatedReader](https://github.com/rahulmcs/csvreaderwriter/blob/master/src/main/java/com/CSV/io/TabSeparatedReader.java) and [TabSeparatedWriter](https://github.com/rahulmcs/csvreaderwriter/blob/master/src/main/java/com/CSV/io/TabSeparatedWriter.java)  are concrete implementations of the [Reader](https://github.com/rahulmcs/csvreaderwriter/blob/master/src/main/java/com/CSV/io/Reader.java) and [Writer](https://github.com/rahulmcs/csvreaderwriter/blob/master/src/main/java/com/CSV/io/Writer.java) interfaces. They use the popular [OpenCSV](http://opencsv.sourceforge.net) open source library available under Apache 2.0 license for implementing the core CSV parsing and serialisation/de-serialisation logic to gain from a robust, standard implementation that has been heavily tested in production code.
+
+An interface oriented design allows for providing various concrete implementations of the [Reader](https://github.com/rahulmcs/csvreaderwriter/blob/master/src/main/java/com/CSV/io/Reader.java) and [Writer](https://github.com/rahulmcs/csvreaderwriter/blob/master/src/main/java/com/CSV/io/Writer.java) interfaces (e.g. an implementation for storing meta data alogwith CSV values) and also allows for changing underlying implementation without breaking the api.
 
 Please browse [CSVReaderWriter](https://github.com/rahulmcs/csvreaderwriter/blob/master/src/main/java/com/CSV/AddressProcessing/CSVReaderWriter.java) to understand the now deprecated api and the motivation behind deprecating the entire class.
 
 Package [io](https://github.com/rahulmcs/csvreaderwriter/blob/master/src/main/java/com/CSV/io/) contains the newly refactored code alongwith javadocs to understand the method usage.
+
 
 New Usage
 ===============
