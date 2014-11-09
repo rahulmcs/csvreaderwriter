@@ -18,15 +18,17 @@ public class ReaderFactory {
      * {@code
      * com.CSV.io.Reader tabSeparatedReader = null;
      * try {
-     *      tabSeparatedReader = ReaderFactory.getTabSeparatedFileReader("data.txt");
-     *      String data[] = tabSeparatedReader.readNextLine();
-     *
+     *      tabSeparatedReader = com.CSV.io.ReaderFactory.getTabSeparatedFileReader("data.txt");
+     *      List<String[]> tokens = tabSeparatedReader.readAll();
+     *      //consume tokens here
      *   } catch(IOException e) {
-     *      //log
+     *      //log exception
      *  } finally {
      *      try {
      *          tabSeparatedReader.close();
-     *      } catch(Exception e) {}
+     *      } catch(Exception e) {
+     *          //log exception
+     *      }
      *  }
      * }
      * </pre>

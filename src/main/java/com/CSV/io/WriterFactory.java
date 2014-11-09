@@ -18,7 +18,7 @@ public class WriterFactory {
      *  com.CSV.io.Writer tabSeparatedWriter = null;
      * {@code
      * try {
-     *      tabSeparatedWriter = WriterFactory.getTabSeparatedFileWriter("data.txt");
+     *      tabSeparatedWriter = com.CSV.io.WriterFactory.getTabSeparatedFileWriter("data.txt");
      *      tabSeparatedWriter.append(new String[]{"abc", "xyz", "pqr"});
      *
      *   } catch(IOException e) {
