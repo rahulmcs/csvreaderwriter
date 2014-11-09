@@ -1,35 +1,83 @@
 csvreaderwriter
 ===============
 
-A utility library providing functionality to read/write CSV (tab separated tokens in this case) to and from text files.
+A utility library to allow reading/writing of Tab separated tokens (CSV) to and from text files.
 
-Historically, the CSVReaderWriter class provided this functionality via a bloated, inconistent and semantically inaccurate interface and has now been deprecated in favour of the new and improved com.CSV.io.Reader and com.CSV.io.Writer interfaces 
-alongwith com.CSV.io.ReaderFactory and com.CSV.io.WriterFactory classes to instantiate robust implementations providing
-Tab separated values read and write functionality.
-com.CSV.TabSeparatedReader and com.CSV.io.TabSeparatedWriter provide concrete implementations of the com.CSV.io.Reader and com.CSV.io.Writer interfaces using the popular OpenCSV open source library available under Apache 2.0 license.
+Historically, [CSVReaderWriter](https://github.com/rahulmcs/csvreaderwriter/blob/master/src/main/java/com/CSV/AddressProcessing/CSVReaderWriter.java)  provided this functionality via a bloated, inconsistent and semantically inaccurate interface and has now been deprecated in favour of the new and improved [Reader](https://github.com/rahulmcs/csvreaderwriter/blob/master/src/main/java/com/CSV/io/Reader.java) and [Writer](https://github.com/rahulmcs/csvreaderwriter/blob/master/src/main/java/com/CSV/io/Writer.java) interfaces 
+alongwith [ReaderFactory](https://github.com/rahulmcs/csvreaderwriter/blob/master/src/main/java/com/CSV/io/ReaderFactory.java) and [WriterFactory](https://github.com/rahulmcs/csvreaderwriter/blob/master/src/main/java/com/CSV/io/WriterFactory.java) classes to instantiate [TabSeparatedReader](https://github.com/rahulmcs/csvreaderwriter/blob/master/src/main/java/com/CSV/io/TabSeparatedReader.java) and [TabSeparatedWriter](https://github.com/rahulmcs/csvreaderwriter/blob/master/src/main/java/com/CSV/io/TabSeparatedWriter.java) which are concrete implementations of the [Reader](https://github.com/rahulmcs/csvreaderwriter/blob/master/src/main/java/com/CSV/io/Reader.java) and [Writer](https://github.com/rahulmcs/csvreaderwriter/blob/master/src/main/java/com/CSV/io/Writer.java) interfaces. They use the popular [OpenCSV](http://opencsv.sourceforge.net) open source library available under Apache 2.0 license for implementing the core CSV parsing and serialisation/de-serialisation logic to gain from a robust, standard implementation that has been heavily tested in production code.
 
-An interface oriented design allows for providing more concrete implementations of the Reader and Writer interfaces (e.g. an implementation for storing meta data alogwith CSV values) and changing underlying implementation without breaking the api.
+An interface oriented design allows for providing more concrete implementations of the [Reader](https://github.com/rahulmcs/csvreaderwriter/blob/master/src/main/java/com/CSV/io/Reader.java) and [Writer](https://github.com/rahulmcs/csvreaderwriter/blob/master/src/main/java/com/CSV/io/Writer.java) interfaces (e.g. an implementation for storing meta data alogwith CSV values) and changing underlying implementation without breaking the api.
 
-Please browse com.CSV.AddressProcessing package to undestand the old CSVReaderWriter api and the javadocs to understand the shortfalls and the motivation behind deprecating the entire class.
+Please browse [CSVReaderWriter](https://github.com/rahulmcs/csvreaderwriter/blob/master/src/main/java/com/CSV/AddressProcessing/CSVReaderWriter.java) to understand the now deprecated api and the motivation behind deprecating the entire class.
 
-Package com.CSV.io contains the newly refactored code alongwith javadoc to understand the method usage.
+Package [io](https://github.com/rahulmcs/csvreaderwriter/blob/master/src/main/java/com/CSV/io/) contains the newly refactored code alongwith javadocs to understand the method usage.
+
+New Usage
+===============
+
+To read a file `data.txt` containing just some tab separated values, the following code should suffice:
+
+        com.CSV.io.Reader tabSeparatedReader = null;
+        try {
+            tabSeparatedReader = com.CSV.io.ReaderFactory.getTabSeparatedFileReader("data.txt");
+            List<String[]> tokens = tabSeparatedReader.readAll();
+            //consume tokens here ...
+        } catch (IOException e) {
+            // log exception
+        } finally {
+            try {
+                tabSeparatedReader.close();
+            } catch (Exception e) {
+                //log exception
+            }
+        }
+
+To write a few lines worth of tab separated values to a file `data.txt`, one would implement the following:
+
+        com.CSV.io.Writer tabSeparatedWriter = null;
+        try {
+            tabSeparatedWriter = com.CSV.io.WriterFactory.getTabSeparatedFileWriter("data.txt");
+            
+            //create a two lines worth of tokens that need to be tab separated and added to data.txt
+            ArrayList<String[]> lines = new ArrayList<String[]>();
+            lines.add(new String[] {
+                    "abc", "xyz", "pqr"
+            });
+            lines.add(new String[] {
+                    "123", "456", "789"
+            });
+            tabSeparatedWriter.append(lines);
+            
+            //can append directly to the file as well
+            tabSeparatedWriter.append(new String[] {
+                    "reader", "writer"
+            });
+        } catch (IOException e) {
+            // log exception
+        } finally {
+            try {
+                tabSeparatedWriter.close();
+            } catch (Exception e) {
+            }
+        }
+
 
 Build Instructions
 ===============
-The project uses gradle to build the java source files into a jar library and maven to push the generated jar artifacts to the maven local repository.Therefore having maven and gradle already configured on your system is a pre-requisite. It would be simplest to pull the code locally for github and open it using IntelliJ which has in-built support for gradle and mavem.
+The project uses gradle to build the java source files into a jar library and maven to push the generated jar artifacts to the maven local repository. Having maven and gradle already configured on your system is therefore a pre-requisite. It would also be simplest to pull the code locally from github and open it using IntelliJ which has in-built support for gradle and maven.
 
-On the command line, simply issue a gradle uploadArchives (or ./gradlew uploadArchives on a mac) command which will build the library and publish the artifact to the local maven repository with followng details:
+On the mac command line (not tested on windows), simply issue `./gradlew uploadArchives` command which will build the library and publish the artifact to the local maven repository with following details:
 
-Group Id: 'com.CSV'
+`Group Id: 'com.CSV'`
 
-artifact id: 'csvreaderwriter'
+`artifact id: 'csvreaderwriter'`
 
-version: '1.1'
+`version: '1.1'`
 
-Dependency Instructions
+Get it
 ===============
 
-Once deployed, the locally published jar canthen be used in your gradle or maven based application project by adding the following dependency information to your build.gradle file:
+Once deployed, the locally published jar can then be used in your gradle or Maven based application project by adding the following dependency information to your `build.gradle`:
 
 repositories {
 
@@ -45,4 +93,4 @@ dependencies {
 
 TODO
 ===============
-Need to create Sonatype repository so that the artifact can be published on Maven central and can then be accessed by applications without needing to first publish the library to a local maven repository.
+Create a Sonatype repository so that the artifact can be published on to Maven central and can then be accessed by applications without needing to first publish the library to a local maven repository.
