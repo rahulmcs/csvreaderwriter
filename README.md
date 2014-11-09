@@ -12,4 +12,30 @@ An interface oriented design allows for providing more concrete implementations 
 
 Please browse com.CSV.AddressProcessing package to undestand the old CSVReaderWriter api and the javadocs to understand the shortfalls and the motivation behind deprecating the entire class.
 
-Packagae com.CSV.io contains the newly refactored code alongwith javadoc to understand the method usage.
+Package com.CSV.io contains the newly refactored code alongwith javadoc to understand the method usage.
+
+Build Instructions
+===============
+The project uses gradle to build the java source files into a jar library and maven to push the generated jar artifacts to the maven local repository.Therefore having maven and gradle already configured on your system is a pre-requisite. It would be simplest to pull the code locally for github and open it using IntelliJ which has in-built support for gradle and mavem.
+
+On the command line, simply issue a gradle uploadArchives (or ./gradlew uploadArchives on a mac) command which will build the library and publish the artifact to the local maven repository with followng details:
+Group Id: 'com.CSV'
+artifact id: 'csvreaderwriter'
+version: '1.1'
+
+Dependency Instructions
+===============
+
+Once deployed, the locally published jar canthen be used in your gradle or maven based application project by adding the following dependency information to your build.gradle file:
+
+repositories {
+    mavenLocal()
+}
+
+dependencies {
+     compile 'com.CSV:csvreaderwriter:1.1'
+}
+
+TODO
+===============
+Need to create Sonatype repository so that the artifact can be published on Maven central and can then be accessed by applications without needing to first publish the library to a local maven repository.
