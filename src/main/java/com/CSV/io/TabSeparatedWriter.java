@@ -20,8 +20,8 @@ public class TabSeparatedWriter implements Writer {
 
     private final CSVWriter mCSVWriterDelegate;
 
-    public TabSeparatedWriter(BufferedWriter bufferedWriter) throws IOException {
-       mCSVWriterDelegate = new CSVWriter(bufferedWriter, '\t');
+    public TabSeparatedWriter(java.io.Writer writer) throws IOException {
+       mCSVWriterDelegate = new CSVWriter(writer, '\t');
     }
 
     @Override

@@ -5,7 +5,15 @@ import java.io.IOException;
 import java.util.List;
 
 /**
- * Interface for reading CSV (comma-separated values) files
+ * Interface for reading CSV (comma-separated values) files.
+ *
+ * The following default behaviour applies:
+ * <ul>
+ *     <li>The default separator value is ','. </li>
+ *     <li>The default quote character is '"'</li>
+ *     <li>The default escape character is '\\'</li>
+ * </ul>
+ * Implementations are free to override the above default values.
  *
  * @author rahulchaudhari
  *
@@ -21,7 +29,7 @@ public interface Reader {
     List<String[]> readAll() throws IOException;
 
     /**
-     * Reads the next line from the buffer and converts to a string array.
+     * Reads the next line of csv tokens from the file and converts to a string array.
      *
      * @return a string array with each csv as a separate entry.
      * @throws IOException on error during reading

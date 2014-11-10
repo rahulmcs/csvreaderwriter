@@ -38,6 +38,6 @@ public class ReaderFactory {
      * @throws IOException error during file operations
      */
     public static Reader getTabSeparatedFileReader(final String fileName) throws IOException {
-        return new TabSeparatedReader( new BufferedReader( new FileReader(fileName)) );
+        return new TabSeparatedReader( new FileReader(fileName));
     }
 }

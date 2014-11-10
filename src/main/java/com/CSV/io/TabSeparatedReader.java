@@ -19,8 +19,8 @@ import java.util.List;
 public class TabSeparatedReader implements Reader {
     private CSVReader mCSVReaderDelegate;
 
-    public TabSeparatedReader(BufferedReader bufferedReader) throws IOException {
-        mCSVReaderDelegate = new CSVReader(bufferedReader, '\t');
+    public TabSeparatedReader(java.io.Reader reader) throws IOException {
+        mCSVReaderDelegate = new CSVReader(reader, '\t');
     }
 
     @Override

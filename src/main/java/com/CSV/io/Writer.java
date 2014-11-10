@@ -5,7 +5,16 @@ import java.io.IOException;
 import java.util.List;
 
 /**
- * Interface for writing CSV (comma-separated values) files
+ * Interface for writing CSV (comma-separated values) files.
+ *
+ *  The following default behaviour applies:
+ * <ul>
+ *     <li>The default separator value is ','. </li>
+ *     <li>The default quote character is '"'</li>
+ *     <li>The default escape character is '\\'</li>
+ *     <li>Default line terminator uses platform encoding.</li>
+ * </ul>
+ * Implementations are free to override the above default values.
  *
  * @author rahulchaudhari
  *
@@ -25,7 +34,7 @@ public interface Writer {
     void append(String[] line);
 
     /**
-     * Close the underlying stream writer flushing any buffered content
+     * Close the underlying stream flushing any buffered content
      * @throws IOException on error during close
      */
     void close() throws IOException;

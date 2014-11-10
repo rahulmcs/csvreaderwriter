@@ -8,7 +8,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 /**
- * @deprecated As of version x.yz, replaced by the new {@link com.CSV.io.Reader} and {@link com.CSV.io.Writer}
+ * @deprecated As of version 1.1, replaced by the new {@link com.CSV.io.Reader} and {@link com.CSV.io.Writer}
  * interfaces. For the new usage, please refer to {@link com.CSV.io.ReaderFactory} and {@link com.CSV.io.WriterFactory}
  *
  * This class has been deprecated since the class and each of its methods have serious design flaws

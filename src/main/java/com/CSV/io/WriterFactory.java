@@ -22,7 +22,7 @@ public class WriterFactory {
      *      tabSeparatedWriter.append(new String[]{"abc", "xyz", "pqr"});
      *
      *   } catch(IOException e) {
-     *      //log
+     *      //log exception
      *  } finally {
      *      try {
      *          tabSeparatedWriter.close();
@@ -37,7 +37,7 @@ public class WriterFactory {
      * @throws IOException error during file operations
      */
     public static Writer getTabSeparatedFileWriter(final String fileName) throws IOException{
-        return new TabSeparatedWriter( new BufferedWriter( new FileWriter(fileName)) );
+        return new TabSeparatedWriter( new FileWriter(fileName) );
     }
 
 }
